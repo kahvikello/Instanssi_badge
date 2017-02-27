@@ -1,0 +1,35 @@
+\documentclass[a4paper,12pt]{letter}
+
+\usepackage{datatool}
+\usepackage[freepin, rowmode]{ticket}
+\usepackage{graphicx}
+
+\unitlength=1mm
+\graphicspath{ {./} }
+
+\usepackage[utf8]{inputenc}
+
+\hoffset= -10mm
+\voffset= -20mm
+\ticketSize{92}{56}
+\ticketDistance{0}{0}
+
+\renewcommand{\ticketdefault}{%
+  \put( 0, 0){\includegraphics[height=56mm, width=92mm]{bg}}
+  \put(88 , 4){\makebox[0mm][r]{\bfseries\large Instanssi 2017}}
+}
+
+\newcommand{\confpin}[3]{\ticket{%
+    \put(4,48){\makebox[0mm][l]{\bfseries\Large #2}}
+    \put(4,43){\makebox[0mm][l]{\bfseries\large #3}}%
+    \put(4,33){\makebox[0mm][l]{\bfseries\large #1}}%
+}}
+
+\begin{document}
+\DTLloaddb{ukkelit}{ukkelit.csv}
+\rmfamily
+\DTLforeach{ukkelit}{\titteli=titteli,\nimi=nimi,\nick=nick}{%
+\confpin{\titteli}{\nimi}{\nick}
+}
+
+\end{document}
