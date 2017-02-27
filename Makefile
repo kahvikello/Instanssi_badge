@@ -8,4 +8,4 @@ pdf:
 	pdflatex badge.tex
 
 clean:
-	-rm *.aux *.out *.log
+	-rm *.aux *.log
